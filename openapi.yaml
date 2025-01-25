@@ -1,0 +1,363 @@
+openapi: 3.0.0
+info:
+  title: Fitness Tracker API
+  version: 1.0.0
+  description: A Fitness API for managing users, meal plans, progress tracking, and workouts.
+servers:
+  - url: http://localhost:3000/api
+    description: Local server
+paths:
+  /users:
+    get:
+      summary: Get all users
+      responses:
+        '200':
+          description: A list of all users
+    post:
+      summary: Create a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                age:
+                  type: integer
+                height:
+                  type: number
+                weight:
+                  type: number
+                goal:
+                  type: string
+              required:
+                - name
+                - age
+                - height
+                - weight
+                - goal
+      responses:
+        '201':
+          description: User created
+  /users/{id}:
+    get:
+      summary: Get a user by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: User details
+    put:
+      summary: Update a user by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                age:
+                  type: integer
+                height:
+                  type: number
+                weight:
+                  type: number
+                goal:
+                  type: string
+              required:
+                - name
+                - age
+                - height
+                - weight
+                - goal
+      responses:
+        '200':
+          description: User updated
+    delete:
+      summary: Delete a user by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: User deleted
+  /mealplans:
+    get:
+      summary: Get all meal plans for a user
+      parameters:
+        - in: query
+          name: userId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of meal plans
+    post:
+      summary: Create a new meal plan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                date:
+                  type: string
+                  format: date
+                calories:
+                  type: integer
+                protein:
+                  type: number
+                carbs:
+                  type: number
+                fats:
+                  type: number
+              required:
+                - userId
+                - date
+                - calories
+                - protein
+                - carbs
+                - fats
+      responses:
+        '201':
+          description: Meal plan created
+  /mealplans/{id}:
+    put:
+      summary: Update a meal plan by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                calories:
+                  type: integer
+                protein:
+                  type: number
+                carbs:
+                  type: number
+                fats:
+                  type: number
+              required:
+                - calories
+                - protein
+                - carbs
+                - fats
+      responses:
+        '200':
+          description: Meal plan updated
+    delete:
+      summary: Delete a meal plan by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Meal plan deleted
+  /progress:
+    get:
+      summary: Get all progress records for a user
+      parameters:
+        - in: query
+          name: userId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of progress records
+    post:
+      summary: Create a new progress record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                date:
+                  type: string
+                  format: date
+                weight:
+                  type: number
+                chest:
+                  type: number
+                arms:
+                  type: number
+                legs:
+                  type: number
+              required:
+                - userId
+                - date
+                - weight
+                - chest
+                - arms
+                - legs
+      responses:
+        '201':
+          description: Progress record created
+  /progress/{id}:
+    put:
+      summary: Update a progress record by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                weight:
+                  type: number
+                chest:
+                  type: number
+                arms:
+                  type: number
+                legs:
+                  type: number
+              required:
+                - weight
+                - chest
+                - arms
+                - legs
+      responses:
+        '200':
+          description: Progress record updated
+    delete:
+      summary: Delete a progress record by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Progress record deleted
+  /workouts:
+    get:
+      summary: Get all workouts for a user
+      parameters:
+        - in: query
+          name: userId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of workouts
+    post:
+      summary: Create a new workout
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                type:
+                  type: string
+                exercise:
+                  type: string
+                sets:
+                  type: integer
+                reps:
+                  type: integer
+                weight:
+                  type: number
+              required:
+                - userId
+                - type
+                - exercise
+                - sets
+                - reps
+                - weight
+      responses:
+        '201':
+          description: Workout created
+  /workouts/{id}:
+    put:
+      summary: Update a workout by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                exercise:
+                  type: string
+                sets:
+                  type: integer
+                reps:
+                  type: integer
+                weight:
+                  type: number
+              required:
+                - type
+                - exercise
+                - sets
+                - reps
+                - weight
+      responses:
+        '200':
+          description: Workout updated
+    delete:
+      summary: Delete a workout by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Workout deleted

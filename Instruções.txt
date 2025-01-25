@@ -1,0 +1,12 @@
+Iniciar Aplicação :
+
+-docker install
+-docker login
+-pull das imagens : 
+	docker pull a045895/inf24dw1g02:nodejs
+
+	docker pull a045895/inf24dw1g02-images:mysql
+
+abrir terminal na pasta com o docker-compose.yml
+
+-docker-compose up 
