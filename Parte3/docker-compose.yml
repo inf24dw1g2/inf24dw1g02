@@ -1,0 +1,50 @@
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: fitness_tracker
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    networks:
+      - backend_network
+
+  api:
+    image: a045895/backend:latest  
+    container_name: loopback-api
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: rootpassword
+      DB_NAME: fitness_tracker
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mysql
+    networks:
+      - backend_network
+
+  frontend:
+    image: a045895/frontend:latest  
+    container_name: react-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      REACT_APP_API_URL: "http://loopback-api:3001" 
+    depends_on:
+      - api
+    networks:
+      - backend_network
+
+volumes:
+  mysql-data:
+
+networks:
+  backend_network:
+    driver: bridge

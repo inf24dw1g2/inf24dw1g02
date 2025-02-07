@@ -1,0 +1,150 @@
+import {
+  Count,
+  CountSchema,
+  Filter,
+  FilterExcludingWhere,
+  repository,
+  Where,
+} from '@loopback/repository';
+import {
+  post,
+  param,
+  get,
+  getModelSchemaRef,
+  patch,
+  put,
+  del,
+  requestBody,
+  response,
+} from '@loopback/rest';
+import {Workout} from '../models';
+import {WorkoutRepository} from '../repositories';
+
+export class WorkoutController {
+  constructor(
+    @repository(WorkoutRepository)
+    public workoutRepository : WorkoutRepository,
+  ) {}
+
+  @post('/workout')
+  @response(200, {
+    description: 'Workout model instance',
+    content: {'application/json': {schema: getModelSchemaRef(Workout)}},
+  })
+  async create(
+    @requestBody({
+      content: {
+        'application/json': {
+          schema: getModelSchemaRef(Workout, {
+            title: 'NewWorkout',
+            
+          }),
+        },
+      },
+    })
+    workout: Workout,
+  ): Promise<Workout> {
+    return this.workoutRepository.create(workout);
+  }
+
+  @get('/workout/count')
+  @response(200, {
+    description: 'Workout model count',
+    content: {'application/json': {schema: CountSchema}},
+  })
+  async count(
+    @param.where(Workout) where?: Where<Workout>,
+  ): Promise<Count> {
+    return this.workoutRepository.count(where);
+  }
+
+  @get('/workout')
+  @response(200, {
+    description: 'Array of Workout model instances',
+    content: {
+      'application/json': {
+        schema: {
+          type: 'array',
+          items: getModelSchemaRef(Workout, {includeRelations: true}),
+        },
+      },
+    },
+  })
+  async find(
+    @param.filter(Workout) filter?: Filter<Workout>,
+  ): Promise<Workout[]> {
+    return this.workoutRepository.find(filter);
+  }
+
+  @patch('/workout')
+  @response(200, {
+    description: 'Workout PATCH success count',
+    content: {'application/json': {schema: CountSchema}},
+  })
+  async updateAll(
+    @requestBody({
+      content: {
+        'application/json': {
+          schema: getModelSchemaRef(Workout, {partial: true}),
+        },
+      },
+    })
+    workout: Workout,
+    @param.where(Workout) where?: Where<Workout>,
+  ): Promise<Count> {
+    return this.workoutRepository.updateAll(workout, where);
+  }
+
+  @get('/workout/{id}')
+  @response(200, {
+    description: 'Workout model instance',
+    content: {
+      'application/json': {
+        schema: getModelSchemaRef(Workout, {includeRelations: true}),
+      },
+    },
+  })
+  async findById(
+    @param.path.number('id') id: number,
+    @param.filter(Workout, {exclude: 'where'}) filter?: FilterExcludingWhere<Workout>
+  ): Promise<Workout> {
+    return this.workoutRepository.findById(id, filter);
+  }
+
+  @patch('/workout/{id}')
+  @response(204, {
+    description: 'Workout PATCH success',
+  })
+  async updateById(
+    @param.path.number('id') id: number,
+    @requestBody({
+      content: {
+        'application/json': {
+          schema: getModelSchemaRef(Workout, {partial: true}),
+        },
+      },
+    })
+    workout: Workout,
+  ): Promise<void> {
+    await this.workoutRepository.updateById(id, workout);
+  }
+
+  @put('/workout/{id}')
+  @response(204, {
+    description: 'Workout PUT success',
+  })
+  async replaceById(
+    @param.path.number('id') id: number,
+    @requestBody() workout: Workout,
+  ): Promise<void> {
+    await this.workoutRepository.replaceById(id, workout);
+  }
+
+  @del('/workout/{id}')
+  @response(204, {
+    description: 'Workout DELETE success',
+  })
+  async deleteById(@param.path.number('id') id: number): Promise<void> {
+    await this.workoutRepository.deleteById(id);
+  }
+}

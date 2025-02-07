@@ -1,0 +1,190 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: center; /* Center navbar links */
+  align-items: center;
+  background-color: transparent;
+  padding: 10px 20px;
+  margin-bottom: 20px; /* Adds some space below the navbar */
+}
+
+.navbar a {
+  color: #4CAF50; /* Text color */
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  margin: 0 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar a:hover {
+  background-color: #4CAF50;
+  color: white; /* Changes text color on hover */
+}
+
+/* Main Content Styles */
+.app {
+  padding: 20px;
+  max-width: 1000px; /* Slightly smaller width for better centering */
+  margin: 0 auto; /* Centers content horizontally */
+  text-align: center; /* Centers the content */
+}
+
+.page-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.page-description {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 30px; /* Adds space below the description */
+}
+
+/* Card-like Layout */
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.card-header {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.card-body {
+  font-size: 1rem;
+}
+
+.card-footer {
+  text-align: right;
+  font-size: 0.875rem;
+}
+
+/* Form Styles */
+form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px auto; /* Centers the form */
+  max-width: 600px;
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box; /* Ensures padding doesn't break the width */
+}
+
+form input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 1.1rem;
+  padding: 12px 20px;
+  border-radius: 5px;
+}
+
+form input[type="submit"]:hover {
+  background-color: #45a049;
+  transform: translateY(-2px); /* Slight hover lift effect */
+}
+
+form input[type="submit"]:active {
+  transform: translateY(1px); /* Button presses down when clicked */
+}
+
+/* Label Styles */
+label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+/* Textarea */
+textarea {
+  resize: vertical;
+  height: 150px;
+}
+
+/* Button Styles */
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Spacing for form fields */
+input[type="text"],
+input[type="number"],
+textarea {
+  display: block;
+  margin-bottom: 20px; /* Adds more space between form fields */
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .app {
+    padding: 10px;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+  }
+
+  .page-description {
+    font-size: 1rem;
+  }
+
+  form {
+    width: 100%;
+    padding: 15px;
+  }
+
+  form input,
+  form textarea {
+    padding: 10px;
+  }
+}
