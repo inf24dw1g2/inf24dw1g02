@@ -15,13 +15,11 @@ An api about a fitness tracker. In this project, a fitness api is impelemented, 
 
 ## Gallery
 
-_Please provide a galery of the final result, with small images_
-A [table](https://www.markdownguide.org/extended-syntax/#tables) may be usefull to organize the images.
+
+
 
 ## Technologies
 
-_Indicate the technologies you have used in this assignment. Please provide links for the user to read more about those technologies._
-* [XML](https://www.w3.org/XML/)
 * [react]() 
 * [Javascript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
 * [loopback4]()
