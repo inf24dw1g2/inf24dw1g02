@@ -4,11 +4,11 @@ Repository to host the project developed for Desenvolvimento Web I, a 2nd year s
 
 ## Short theme description
 
-An example report using markdown on Github. This documentation is writen using [Markdown](https://www.markdownguide.org/). Here is a [link to the basic syntax](https://www.markdownguide.org/basic-syntax), but an [extended syntax](https://www.markdownguide.org/extended-syntax/) is also available. If you're starting with Markdown, you may want to try a [Markdown Tutorial](https://www.markdowntutorial.com/) and read the [getting started](https://www.markdownguide.org/getting-started/) section.
+An api about a fitness tracker. In this project, a fitness api is impelemented, first using a node.js server. Then a loopback4 server with react admin frontend
 
 ## Repository organization
 
-_Please help reader navigate around describing how the repository is organized by providing links_
+
 * **Source code** is in the [src folder](src/).
 * Report chapters are in [doc folder](doc/).
 * Initial [OpenApi document](api/openapi.yaml)
@@ -22,25 +22,25 @@ A [table](https://www.markdownguide.org/extended-syntax/#tables) may be usefull 
 
 _Indicate the technologies you have used in this assignment. Please provide links for the user to read more about those technologies._
 * [XML](https://www.w3.org/XML/)
-* [HTML5](https://html.spec.whatwg.org/multipage/) + [CSS3](https://www.w3.org/Style/CSS/)
+* [react]() 
 * [Javascript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
-* [PHP](https://www.php.net/)
+* [loopback4]()
 * [nodeJS](https://nodejs.org/en/)
-* _Any other?_
+*  [mysqk]()
+* [docker]()
+
+
 
 ### Frameworks and Libraries
 
 _Did you use any aditional libraries? Describe them here._
 * Docker
-* Multipass
 * NodeJS
-* JQuery
-* Laravel
-* Bootstrap
+* Loopback 4
 * ReactJS
 
 ## Report
-_Please add at least on section (a file) per Chapter. But you can add more._
+
 
 ### Project presentation
 * Chapter 1: [Project presentation](doc/c1.md)
