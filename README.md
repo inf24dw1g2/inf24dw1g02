@@ -1,4 +1,4 @@
-# My work assignment Title
+# Fitness-Tracker API
 
 Repository to host the project developed for Desenvolvimento Web I, a 2nd year subject at UMAIA. Developed by Tiago Rego : [@TiagoRego](https://github.com/tiago-u)(A045895@umaia.pt)
 
