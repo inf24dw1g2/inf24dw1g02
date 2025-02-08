@@ -50,5 +50,4 @@ _Did you use any aditional libraries? Describe them here._
 * Chapter 4: [Presentation](doc/c4.md)
 
 ## Team
-* Marco Amaro Oliveira [@MarcoOliveira](https://github.com/marcoamarooliveira)
-* Other team members
+* Tiago Rego [@TiagoRego](https://github.com/tiago-u)
